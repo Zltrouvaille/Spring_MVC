@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+    <!--取别名，默认值是类名。可以简化操作。
+            原本在映射文件中：parameterType="com.banyu.achieve.xml.dao.User"   现在可以parameterType="user"
+        -->
+    <typeAliases>
+        <!--给这个包下的类都取别名-->
+        <package name="org.domain"/>
+    </typeAliases>
+    <!--配置数据库环境-->
+    <environments default="mysql">
+        <environment id="mysql">
+            <transactionManager type="JDBC"></transactionManager>
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql://localhost:3306/spring_db"/>
+                <property name="username" value="root"/>
+                <property name="password" value="root"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <!--配置映射文件目录，使用package标签表示在该目录下的所有文件都是映射文件-->
+    <mappers>
+        <package name="org.dao"/>
+    </mappers>
+</configuration>
